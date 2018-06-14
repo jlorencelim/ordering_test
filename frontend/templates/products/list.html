@@ -1,24 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <table>
-        <tr>
-            <th>Symbol</th>
-            <th>Description</th>
-            <th>Unit</th>
-            <th>Quantity</th>
-        </tr>
+{% extends 'base.html' %}
+
+{% block head_title %}Store{% endblock head_title %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
         {% for product in products %}
-        <tr>
-            <td>{{ product.symbol }}</td>
-            <td>{{ product.description }}</td>
-            <td>{{ product.unit }}</td>
-            <td>{{ product.quantity }}</td>
-        </tr>
+            <tbody>
+                <tr>
+                    <td>{{ product.symbol }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.unit }}</td>
+                    <td>{{ product.quantity }}</td>
+                </tr>
+            </tbody>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock content %}
