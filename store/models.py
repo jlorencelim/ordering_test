@@ -14,7 +14,7 @@ class Product(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, related_name='orders')
     product = models.ForeignKey('store.Product', related_name='orders')
-    quantity = models.PositiveIntegerField(default=0)
+    quantity = models.PositiveIntegerField()
 
     def __str__(self):
         return '{} {}'.format(self.user.get_full_name(), self.product.symbol)

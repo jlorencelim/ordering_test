@@ -1,4 +1,5 @@
 ! function() {
+    // Filter
     function searchFunction() {
         let td;
         let i;
@@ -12,8 +13,8 @@
             descTD = tr[i].getElementsByTagName("td")[1];
 
             if (symbolTD || descTD) {
-                let condition1 = symbolTD.innerHTML.toUpperCase().indexOf(filter) > -1
-                let condition2 = descTD.innerHTML.toUpperCase().indexOf(filter) > -1
+                let condition1 = symbolTD.innerHTML.toUpperCase().indexOf(filter) > -1;
+                let condition2 = descTD.innerHTML.toUpperCase().indexOf(filter) > -1;
 
                 if (condition1 || condition2) {
                     tr[i].style.display = "";
@@ -24,5 +25,20 @@
         })
     }
     const $contentMain = $('#store-div');
-    $contentMain.on('keyup', '#search-input', void 0, searchFunction)
+    $contentMain.on('keyup', '#search-input', void 0, searchFunction);
+
+    $('.order-form').on('submit', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            context: this,
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(response) {
+                $(this).trigger('reset');
+            }
+        });
+    });
 }();

@@ -19,18 +19,28 @@
                     <th>Description</th>
                     <th>Unit</th>
                     <th>Quantity</th>
+                    <th></th>
                 </tr>
             </thead>
-            {% for product in products %}
-                <tbody>
-                    <tr>
-                        <td>{{ product.symbol }}</td>
-                        <td>{{ product.description }}</td>
-                        <td>{{ product.unit }}</td>
-                        <td>{{ product.quantity }}</td>
-                    </tr>
-                </tbody>
-            {% endfor %}
+            <tbody>
+                {% for product in products %}
+                    <form method="POST" action="{% url 'store-api:orders-list' %}" class="order-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="product" value="{{ product.id }}">
+                        <tr>
+                            <td>{{ product.symbol }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.unit }}</td>
+                            <td>
+                                <input type="number" name="quantity" class="form-control quantity-field" required>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark" type="submit">Order</button>
+                            </td>
+                        </tr>
+                    </form>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 {% endblock content %}

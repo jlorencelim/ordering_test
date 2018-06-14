@@ -25,14 +25,14 @@ from store.api import OrderViewSet
 
 
 router = DefaultRouter()
-router.register(r'orders', OrderViewSet, base_name='order')
+router.register(r'orders', OrderViewSet, base_name='orders')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('users.urls', namespace='users')),
-    url(r'^', include('store.urls', namespace="store")),
+    url(r'^', include('store.urls', namespace='store')),
 
-    url(r'^api/', include(router.urls)),
+    url(r'^api/', include(router.urls, namespace='store-api')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

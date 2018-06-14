@@ -5,10 +5,9 @@
 2. clone this repository
 3. run `docker-compose build` to build web container
 4. run `docker-compose up web` to test web and db containers
-5. `sudo docker ps -a` to check your list of containers
-6. `sudo docker exec -it <name-of-web-container> "bash"`
-7. `python3 manage.py migrate`
-8. `python3 manage.py createsuperuser`
+5. `sudo docker exec -it ordering_test_web_1 "bash"`
+6. `python3 manage.py migrate`
+7. `python3 manage.py createsuperuser`
 
 ## To run project:
 1. run `docker-compose up web`
