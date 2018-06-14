@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Symbol</th>
+            <th>Description</th>
+            <th>Unit</th>
+            <th>Quantity</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.symbol }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.unit }}</td>
+            <td>{{ product.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
