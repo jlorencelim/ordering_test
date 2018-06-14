@@ -91,5 +91,6 @@ ENV/
 # ignore pycharm/webstorm files
 .idea
 
-
+# Mac files
+.DS_Store
 
